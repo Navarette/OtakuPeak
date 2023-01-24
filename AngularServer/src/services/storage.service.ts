@@ -18,6 +18,7 @@ export class StorageService {
     localStorage.removeItem('id');
     localStorage.removeItem('email');
     localStorage.removeItem('username');
+    localStorage.removeItem('administrator');
   }
 
   public clearData() {

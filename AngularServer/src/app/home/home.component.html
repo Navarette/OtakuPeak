@@ -1,14 +1,17 @@
-<div class="container circle-container">
+<div class="container-fluid circle-container">
   <div class="ring"></div>
   <section class="mx-auto d-block">
     <img [src]="gzl" class="image pull-right" id="reg" *ngIf="!log" [routerLink]="['/Register']">
+    <!-- <a class="image position-absolute top-50 start-100 translate-middle" id="btn" type="submit" *ngIf="admin()" [routerLink]="['/BackEnd']">A</a> -->
     <img [src]="gzl" class="image pull-right" id="reg" *ngIf="log" (click)="_storageService.removeData()" [routerLink]="['']">
     <img [src]="cvr_white" id="white" class="image">
     <img [src]="bc_level" id="bc" class="image">
     <img [src]="gzl_level" id="gzl" class="image">
     <img [src]="city_level" id="city" class="image">
   </section>
-
+  <div class="text-start text-wrap display-1 text-white">
+    
+  </div>
   <h1 class="text-center">
     TUTTO CIO' CHE CERCHI IN UN SOLO SITO
   </h1>

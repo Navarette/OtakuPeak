@@ -18,6 +18,7 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { GenereRegisterComponent } from './genere-register/genere-register.component';
+import { BackEndComponent } from './back-end/back-end.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { GenereRegisterComponent } from './genere-register/genere-register.compo
     RegisterComponent,
     LoginComponent,
     GenereRegisterComponent,
+    BackEndComponent,
 
   ],
   imports: [
