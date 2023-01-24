@@ -32,7 +32,11 @@ def reg():
     # Il controllo della password e della sua conferma lo faccio fare ad Angular tramite la form
     password = request.args.get("pwd")
     # cpwd = request.args.get("cpwd")
-
+    data = {
+    "statusCode": 200,
+    "errorMessage": "",
+    "data": {}
+  }
     Cq = "SELECT * FROM utente WHERE username = %(username)s OR email = %(email)s"
     Ccursor = conn.cursor(as_dict=True)
     Cp = {"username": f"{username}","email": f"{email}"}
@@ -44,7 +48,7 @@ def reg():
     if len(Cdata) < 1: # Se l'utente non esiste
         print(request.args)
         cursor = conn.cursor(as_dict=True)
-        q = 'INSERT INTO utente (username, email, pwd) VALUES (%(username)s, %(email)s, %(password)s)'
+        q = 'INSERT INTO utente (username, email, pwd,administrator) VALUES (%(username)s, %(email)s, %(password)s,0)'
         p = {"username": f"{username}","email": f"{email}","password": f"{password}"}
         cursor.execute(q, p)
         conn.commit()
@@ -53,8 +57,8 @@ def reg():
         p = {"email": f"{email}"}
         cursor.execute(q, p)
         res = cursor.fetchall()
-
-        return jsonify({'data': res[0], 'statusCode': 200})
+        data["data"] = res[0]
+        return jsonify(data)
     else:
         return jsonify({'errorMessage': 'User already exists!', 'statusCode': 401})
 # --------------------------------GENERI-UTENTE--------------------------------------------------
@@ -114,7 +118,7 @@ def login():
       data["statusCode"] = 403
       data["errorMessage"] = "Wrong password"
     else:
-      data["data"] = res
+      data["data"] = res[0]
       data["statusCode"] = 200
       print('funziono :)')
       
@@ -134,7 +138,6 @@ def tipoRiceraAnime():
 @app.route('/titoloAnime', methods=['GET'])
 def titoloAnime():
     data = request.args.get("titoloa")
-    print("il dato è" + str(data))
     q = 'SELECT * FROM anime ' + ('WHERE nome LIKE %(t)s' if data != None and data != '' else "")
     cursor = conn.cursor(as_dict=True)
     p = {"t": f"%{data}%"}

@@ -10,10 +10,10 @@ import { Data } from 'src/models/LoginData.model';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  url: string = "https://3000-ghebr0us-otakupeak-e6t2hrssvh1.ws-eu83.gitpod.io/Login";
+  url: string = "https://3000-ghebr0us-otakupeak-inro7676rms.ws-eu83.gitpod.io/Login";
   form!: FormGroup;
   errorMessage!: string;
-  yo!:any;
+  yo!: any;
 
   constructor(private http: HttpClient, private fb: FormBuilder, private router: Router) { }
 
@@ -30,7 +30,6 @@ export class LoginComponent {
     let body: HttpParams = new HttpParams();
     body = body.appendAll({
       email: this.form.value.email,
-      
       pwd: this.form.value.pwd
 
     });
@@ -41,18 +40,19 @@ export class LoginComponent {
       }),
       params: body,
       responseType: "json"
-    }).subscribe(res => {
-      if (res.statusCode == 200) {
+    }).subscribe(data => {
+      if (data.statusCode == 200) {
         
-        localStorage.setItem('email',res.data[0].email);
-        localStorage.setItem('id',res.data[0].id);
-        localStorage.setItem('username',res.data[0].username);
+        localStorage.setItem('id', data.data.id.toString());
+        localStorage.setItem('email', data.data.email);
+        localStorage.setItem('username', data.data.username);
+        localStorage.setItem('administrator', data.data.administrator.toString());
         this.router.navigate(["Home"]);
-        
+
       } else {
-        this.errorMessage = res.data;
+        this.errorMessage = data.data.toString();
       }
     })
-    
+
   }
 }
