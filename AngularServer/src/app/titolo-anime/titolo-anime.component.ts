@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class TitoloAnimeComponent {
   titoloa!: any;
   loading!: Boolean;
-  url: string = "https://3000-navarette-otakupeak-6qe5yfq2g3v.ws-eu83.gitpod.io/titoloAnime";
+  url: string = "https://3000-navarette-otakupeak-d04eh82gz7t.ws-eu83.gitpod.io/titoloAnime";
 
   constructor(public http: HttpClient) {
     this.get(this.url);
