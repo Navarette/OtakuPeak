@@ -12,7 +12,7 @@ import { StorageService } from 'src/services/storage.service';
 })
 export class GenereRegisterComponent {
   nome! : any;
-  url: string = "https://3000-navarette-otakupeak-35jixgmf3d3.ws-eu84.gitpod.io";
+  url: string = "https://3000-navarette-otakupeak-v98afco09il.ws-eu84.gitpod.io";
   selected: Selected[] = []
   errorMessage: string = "";
 
