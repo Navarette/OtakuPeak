@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GenereAnimeComponent {
   nome! : any;
-  url: string = "https://3000-navarette-otakupeak-d04eh82gz7t.ws-eu83.gitpod.io/genereAnime";
+  url: string = "https://3000-navarette-otakupeak-35jixgmf3d3.ws-eu84.gitpod.io/genereAnime";
   constructor(public http : HttpClient){
     this.get(this.url);
   }
